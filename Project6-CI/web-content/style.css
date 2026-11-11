@@ -1,0 +1,708 @@
+/* ============================================================
+GROOVY SHIBA RETRO STYLESHEET (style.css)
+Colors: Tangerine/Burnt Orange, Mustard/Sunny Yellow, Deep Teal/Turquoise, Sage Green
+Vibe: 1970s Funk, Wavy Shapes, Warm Retro Soul
+============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Shrikhand&family=Space+Grotesk:wght@500;700&display=swap');
+
+:root {
+--color-orange: #E85D04;
+--color-orange-dark: #DC2F02;
+--color-mustard: #FAA307;
+--color-yellow: #FFBA08;
+--color-cream: #FFF7ED;
+--color-teal: #0A5C66;
+--color-teal-light: #178582;
+--color-sage: #8DAA91;
+--color-sage-light: #B4CEB9;
+--color-dark: #1F2421;
+--color-shadow: #2B1810;
+
+--font-groovy: 'Shrikhand', cursive;
+--font-body: 'Fredoka', sans-serif;
+--font-accent: 'Space Grotesk', sans-serif;
+
+--retro-border: 3.5px solid var(--color-dark);
+--retro-shadow: 5px 5px 0px var(--color-dark);
+--retro-shadow-hover: 2px 2px 0px var(--color-dark);
+--retro-shadow-lg: 8px 8px 0px var(--color-dark);
+}
+
+{
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+body {
+font-family: var(--font-body);
+background-color: var(--color-cream);
+color: var(--color-dark);
+background-image:
+radial-gradient(circle at 10% 20%, rgba(250, 163, 7, 0.12) 0%, transparent 35%),
+radial-gradient(circle at 90% 80%, rgba(10, 92, 102, 0.14) 0%, transparent 40%),
+radial-gradient(circle at 50% 50%, rgba(141, 170, 145, 0.15) 0%, transparent 50%);
+background-attachment: fixed;
+overflow-x: hidden;
+line-height: 1.6;
+}
+
+/* ================= TYPOGRAPHY & UTILS ================= */
+h1, h2, h3, .font-groovy {
+font-family: var(--font-groovy);
+letter-spacing: 0.5px;
+line-height: 1.2;
+}
+
+a {
+color: inherit;
+text-decoration: none;
+}
+
+.container {
+width: 90%;
+max-width: 1200px;
+margin: 0 auto;
+}
+
+.badge-pill {
+display: inline-flex;
+align-items: center;
+gap: 0.5rem;
+padding: 0.4rem 1.2rem;
+border-radius: 9999px;
+border: var(--retro-border);
+font-weight: 700;
+font-size: 0.85rem;
+text-transform: uppercase;
+background-color: var(--color-yellow);
+box-shadow: 3px 3px 0 var(--color-dark);
+}
+
+/* ================= RETRO BUTTONS ================= */
+.btn-groovy {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 0.6rem;
+font-family: var(--font-groovy);
+font-size: 1.15rem;
+padding: 0.85rem 1.8rem;
+border-radius: 9999px;
+border: var(--retro-border);
+box-shadow: var(--retro-shadow);
+cursor: pointer;
+transition: all 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+text-decoration: none;
+background: var(--color-orange);
+color: #FFF;
+}
+
+.btn-groovy:hover {
+transform: translate(3px, 3px);
+box-shadow: var(--retro-shadow-hover);
+}
+
+.btn-groovy-teal {
+background: var(--color-teal);
+color: var(--color-cream);
+}
+
+.btn-groovy-yellow {
+background: var(--color-yellow);
+color: var(--color-dark);
+}
+
+.btn-groovy-sage {
+background: var(--color-sage);
+color: var(--color-dark);
+}
+
+/* ================= HEADER & NAV ================= */
+.site-header {
+position: sticky;
+top: 0;
+z-index: 100;
+background-color: rgba(255, 247, 237, 0.95);
+backdrop-filter: blur(8px);
+border-bottom: var(--retro-border);
+padding: 1rem 0;
+}
+
+.nav-wrap {
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+.brand-logo {
+display: flex;
+align-items: center;
+gap: 0.75rem;
+font-family: var(--font-groovy);
+font-size: 1.6rem;
+color: var(--color-orange);
+text-shadow: 2px 2px 0 var(--color-yellow);
+}
+
+.brand-icon {
+width: 44px;
+height: 44px;
+background: var(--color-yellow);
+border: var(--retro-border);
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1.5rem;
+box-shadow: 2px 2px 0 var(--color-dark);
+}
+
+.nav-links {
+display: flex;
+align-items: center;
+gap: 1.2rem;
+list-style: none;
+}
+
+.nav-links a {
+font-weight: 700;
+font-size: 1.05rem;
+padding: 0.5rem 1.1rem;
+border-radius: 9999px;
+transition: all 0.2s ease;
+border: 2px solid transparent;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+background: var(--color-yellow);
+border: 2px solid var(--color-dark);
+box-shadow: 2px 2px 0 var(--color-dark);
+}
+
+/* ================= RETRO DECORATIVE FLOWER ================= */
+.retro-flower {
+display: inline-block;
+animation: spinSlow 20s linear infinite;
+transform-origin: center;
+}
+
+@keyframes spinSlow {
+from { transform: rotate(0deg); }
+to { transform: rotate(360deg); }
+}
+
+/* ================= WAVY SECTION SEPARATORS ================= */
+.wave-divider {
+width: 100%;
+overflow: hidden;
+line-height: 0;
+}
+
+.wave-divider svg {
+display: block;
+width: calc(100% + 1.3px);
+height: 60px;
+}
+
+/* ================= HERO SECTION ================= */
+.hero {
+padding: 4.5rem 0 3rem;
+position: relative;
+}
+
+.hero-grid {
+display: grid;
+grid-template-columns: 1.1fr 0.9fr;
+align-items: center;
+gap: 3rem;
+}
+
+.hero-content h1 {
+font-size: 3.6rem;
+color: var(--color-orange-dark);
+text-shadow: 4px 4px 0 var(--color-yellow), 7px 7px 0 var(--color-teal);
+margin: 1rem 0;
+line-height: 1.1;
+}
+
+.hero-subtitle {
+font-size: 1.25rem;
+color: #3f3933;
+margin-bottom: 2rem;
+max-width: 520px;
+font-weight: 600;
+}
+
+.hero-actions {
+display: flex;
+gap: 1rem;
+flex-wrap: wrap;
+}
+
+.hero-badge-group {
+display: flex;
+gap: 0.6rem;
+margin-top: 2rem;
+flex-wrap: wrap;
+}
+
+.hero-visual {
+position: relative;
+}
+
+.hero-art-frame {
+background: var(--color-yellow);
+border: var(--retro-border);
+box-shadow: var(--retro-shadow-lg);
+border-radius: 40px;
+padding: 1.8rem;
+position: relative;
+text-align: center;
+}
+
+.hero-avatar {
+width: 100%;
+max-width: 380px;
+border-radius: 30px;
+border: var(--retro-border);
+background: #FFF;
+box-shadow: 4px 4px 0 var(--color-dark);
+transition: transform 0.3s ease;
+}
+
+.hero-avatar:hover {
+transform: rotate(-2deg) scale(1.02);
+}
+
+.floating-pill {
+position: absolute;
+bottom: -15px;
+right: -10px;
+background: var(--color-teal);
+color: white;
+border: var(--retro-border);
+padding: 0.6rem 1.4rem;
+border-radius: 9999px;
+font-family: var(--font-groovy);
+box-shadow: 4px 4px 0 var(--color-dark);
+transform: rotate(4deg);
+}
+
+/* ================= RETRO CARDS (THE GROOVY VIBE) ================= */
+.section-vibe {
+background-color: var(--color-sage-light);
+padding: 5rem 0;
+border-top: var(--retro-border);
+border-bottom: var(--retro-border);
+}
+
+.section-title-wrap {
+text-align: center;
+margin-bottom: 3.5rem;
+}
+
+.section-title {
+font-size: 2.8rem;
+color: var(--color-teal);
+text-shadow: 3px 3px 0 var(--color-yellow);
+margin-top: 0.5rem;
+}
+
+.cards-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 2rem;
+}
+
+.retro-card {
+background: #FFF;
+border: var(--retro-border);
+border-radius: 24px;
+padding: 2rem;
+box-shadow: var(--retro-shadow);
+transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s;
+position: relative;
+overflow: hidden;
+}
+
+.retro-card:hover {
+transform: translateY(-8px);
+box-shadow: var(--retro-shadow-lg);
+}
+
+.card-icon {
+font-size: 2.6rem;
+margin-bottom: 1rem;
+display: inline-block;
+background: var(--color-cream);
+border: 2px solid var(--color-dark);
+width: 65px;
+height: 65px;
+line-height: 65px;
+text-align: center;
+border-radius: 50%;
+box-shadow: 3px 3px 0 var(--color-dark);
+}
+
+.card-title {
+font-size: 1.45rem;
+color: var(--color-orange-dark);
+margin-bottom: 0.75rem;
+}
+
+.card-text {
+font-size: 0.98rem;
+color: #3b423d;
+}
+
+/* ================= SHIBA MOODBOARD / GALLERY ================= */
+.section-gallery {
+padding: 5.5rem 0;
+}
+
+.gallery-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 2.2rem;
+}
+
+.mood-card {
+background: #FFF;
+border: var(--retro-border);
+border-radius: 20px;
+padding: 1.2rem;
+box-shadow: var(--retro-shadow);
+position: relative;
+transition: transform 0.3s ease;
+}
+
+.mood-card:nth-child(even) {
+transform: rotate(1deg);
+}
+
+.mood-card:nth-child(odd) {
+transform: rotate(-1deg);
+}
+
+.mood-card:hover {
+transform: scale(1.03) rotate(0deg);
+z-index: 5;
+}
+
+.mood-img-wrap {
+position: relative;
+border: var(--retro-border);
+border-radius: 14px;
+overflow: hidden;
+height: 220px;
+background-color: var(--color-yellow);
+}
+
+.mood-img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+
+.mood-sticker {
+position: absolute;
+top: 10px;
+right: 10px;
+background: var(--color-orange);
+color: white;
+font-weight: 700;
+font-size: 0.75rem;
+padding: 0.3rem 0.8rem;
+border-radius: 9999px;
+border: 2px solid var(--color-dark);
+box-shadow: 2px 2px 0 var(--color-dark);
+text-transform: uppercase;
+}
+
+.mood-content {
+padding-top: 1rem;
+}
+
+.mood-caption {
+font-family: var(--font-groovy);
+font-size: 1.2rem;
+color: var(--color-teal);
+margin-bottom: 0.3rem;
+}
+
+.mood-desc {
+font-size: 0.9rem;
+color: #4b5563;
+}
+
+/* ================= SOUNDBOARD / MOOD GENERATOR ================= */
+.section-soundboard {
+background: var(--color-mustard);
+padding: 5rem 0;
+border-top: var(--retro-border);
+border-bottom: var(--retro-border);
+}
+
+.soundboard-box {
+background: #FFF;
+border: var(--retro-border);
+border-radius: 30px;
+padding: 3rem 2rem;
+box-shadow: var(--retro-shadow-lg);
+text-align: center;
+max-width: 850px;
+margin: 0 auto;
+}
+
+.soundboard-buttons {
+display: flex;
+flex-wrap: wrap;
+gap: 1rem;
+justify-content: center;
+margin: 2.2rem 0;
+}
+
+.sound-btn {
+font-family: var(--font-groovy);
+font-size: 1rem;
+padding: 0.8rem 1.4rem;
+border-radius: 9999px;
+border: var(--retro-border);
+background: var(--color-cream);
+color: var(--color-dark);
+box-shadow: var(--retro-shadow);
+cursor: pointer;
+transition: all 0.15s ease;
+}
+
+.sound-btn:hover {
+transform: translate(2px, 2px);
+box-shadow: var(--retro-shadow-hover);
+background: var(--color-yellow);
+}
+
+.speech-bubble {
+position: relative;
+background: var(--color-teal);
+color: #FFF;
+border: var(--retro-border);
+border-radius: 25px;
+padding: 1.6rem 2rem;
+font-size: 1.35rem;
+font-family: var(--font-accent);
+font-weight: 700;
+display: inline-block;
+min-height: 80px;
+box-shadow: var(--retro-shadow);
+max-width: 650px;
+transition: all 0.25s ease;
+}
+
+.speech-bubble::after {
+content: '';
+position: absolute;
+bottom: -18px;
+left: 50%;
+transform: translateX(-50%);
+border-width: 18px 18px 0;
+border-style: solid;
+border-color: var(--color-dark) transparent;
+display: block;
+width: 0;
+}
+
+/* ================= CONTACT PAGE STYLES ================= */
+.contact-section {
+padding: 4.5rem 0;
+}
+
+.contact-layout {
+display: grid;
+grid-template-columns: 1.2fr 0.8fr;
+gap: 3.5rem;
+align-items: start;
+}
+
+.contact-card {
+background: #FFF;
+border: var(--retro-border);
+border-radius: 28px;
+padding: 2.5rem;
+box-shadow: var(--retro-shadow-lg);
+}
+
+.form-group {
+margin-bottom: 1.4rem;
+}
+
+.form-label {
+display: block;
+font-weight: 700;
+font-size: 0.95rem;
+text-transform: uppercase;
+margin-bottom: 0.4rem;
+color: var(--color-dark);
+}
+
+.form-control {
+width: 100%;
+padding: 0.9rem 1.1rem;
+border: var(--retro-border);
+border-radius: 14px;
+font-family: var(--font-body);
+font-size: 1rem;
+background-color: var(--color-cream);
+color: var(--color-dark);
+box-shadow: 3px 3px 0 var(--color-dark);
+transition: all 0.2s ease;
+outline: none;
+}
+
+.form-control:focus {
+background-color: #FFF;
+box-shadow: 4px 4px 0 var(--color-orange);
+border-color: var(--color-orange);
+}
+
+textarea.form-control {
+resize: vertical;
+min-height: 120px;
+}
+
+.hq-card {
+background: var(--color-sage);
+border: var(--retro-border);
+border-radius: 28px;
+padding: 2.2rem;
+box-shadow: var(--retro-shadow-lg);
+color: var(--color-dark);
+}
+
+.hq-detail-item {
+display: flex;
+align-items: flex-start;
+gap: 1rem;
+margin-top: 1.3rem;
+padding-bottom: 1.3rem;
+border-bottom: 2px dashed rgba(31, 36, 33, 0.3);
+}
+
+.hq-detail-item:last-child {
+border-bottom: none;
+padding-bottom: 0;
+}
+
+.hq-icon {
+width: 44px;
+height: 44px;
+background: var(--color-cream);
+border: 2px solid var(--color-dark);
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1.3rem;
+flex-shrink: 0;
+box-shadow: 2px 2px 0 var(--color-dark);
+}
+
+/* ================= TOAST NOTIFICATION ================= */
+.toast-msg {
+position: fixed;
+bottom: 25px;
+right: 25px;
+background: var(--color-teal);
+color: #FFF;
+border: var(--retro-border);
+border-radius: 18px;
+padding: 1.2rem 1.8rem;
+box-shadow: var(--retro-shadow-lg);
+font-family: var(--font-accent);
+font-weight: 700;
+display: flex;
+align-items: center;
+gap: 1rem;
+z-index: 1000;
+transform: translateY(150px);
+opacity: 0;
+transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.toast-msg.show {
+transform: translateY(0);
+opacity: 1;
+}
+
+/* ================= FOOTER ================= */
+.site-footer {
+background-color: var(--color-dark);
+color: var(--color-cream);
+padding: 3.5rem 0 2rem;
+border-top: var(--retro-border);
+margin-top: 3rem;
+}
+
+.footer-content {
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+gap: 1.5rem;
+}
+
+.footer-logo {
+font-family: var(--font-groovy);
+font-size: 2.2rem;
+color: var(--color-yellow);
+}
+
+.footer-links {
+display: flex;
+gap: 1.5rem;
+list-style: none;
+}
+
+.footer-links a:hover {
+color: var(--color-mustard);
+text-decoration: underline;
+}
+
+.footer-note {
+font-size: 0.85rem;
+color: #9ca3af;
+}
+
+/* ================= RESPONSIVE QUERIES ================= */
+@media (max-width: 900px) {
+.hero-grid,
+.contact-layout {
+grid-template-columns: 1fr;
+gap: 2.5rem;
+}
+
+.hero-content h1 {
+font-size: 2.8rem;
+}
+}
+
+@media (max-width: 600px) {
+.site-header {
+padding: 0.8rem 0;
+}
+
+.brand-logo {
+font-size: 1.3rem;
+}
+
+.hero-content h1 {
+font-size: 2.2rem;
+}
+
+.cards-grid,
+.gallery-grid {
+grid-template-columns: 1fr;
+}
+}
