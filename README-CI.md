@@ -88,17 +88,51 @@ This is done so the image can be accessed remotely, instead of just locally.
 
 Public DockerHub repo: mandyhoward21/howard.cicd-f26
 
-### **Authentication:**
+[DockerHub Repo](https://hub.docker.com/r/mandyhoward21/howard-cicd-f26/tags)
 
-First, you will authenticate using a Personal Access Token (PAT).
+
+First, you will authenticate DockerHub using a Personal Access Token (PAT). From the command line, enter: 
 
 `docker login`
 
 Enter your DockerHub username and PAT when prompted.
 
-*How to find your DockerHub username:* - Open DockerDesktop, click on the profile icon at the top right (Mine shows as a "M")
+*How to find your DockerHub username:* Open DockerDesktop, sign in, click on the profile icon at the top right (Mine shows as a "M")
 
 ![DockerDesktop-username](Project6-CI/images/dockerdesktop-un.png)
+
+*How to create a PAT:* 
+- While you have your profile icon selected, click "Account Settings". 
+- Navigate to "Personal access tokens". (It is located on the left sidebar.)
+- Generate the token by clicking "Generate new token" at the top right.
+- Enter a description that will let you know what this particular token is used for, set your expiration date and access permissions. I set mine to 90 days expiration and "Repo Read, Write, Delete". I selected Allow Cloud Sandbox Access and clicked Generate.
+
+### **Push the Image**
+
+`docker push mandyhoward21/howard-cicd-f26:latest`
+
+![Docker Push](Project6-CI/images/docker-push.png)
+
+### **Pull and Test Pushed Image**
+
+To make sure the image can be retrieved from DockerHub.
+
+`docker pull mandyhoward21/howard-cicd-f26:latest`
+
+![Docker Pull](Project6-CI/images/docker-pull.png)
+
+Test by running the downloaded image in a separate container.
+
+`docker run -d -p 8080:80 --name howard-cicd-remote-test mandyhoward21/howard-cicd-f26:latest`
+
+
+
+
+
+
+
+
+
 
 
 
