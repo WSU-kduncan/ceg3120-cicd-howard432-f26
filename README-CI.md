@@ -307,7 +307,7 @@ Response: Insert this immediately above </body>:
 Source: Gemini Prompt "Check this markdown file for any spelling or syntax errors"
 Response: Had a few images that were missing .png, a couple of spelling errors, and a duplicate image tag.
 
-
+ORIGINALLY CREATED REPO HERE: https://github.com/mandyhoward21/ceg3120-cicd-howard-f26
 
 
 
