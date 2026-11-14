@@ -179,7 +179,15 @@ tags: mandyhoward21/howard-cicd-f26:latest
 ```
 ![Secret Test: Success](Project6-CI/images/gh-secret-success.png)
 
+### **Test on Non-Main Branch**
 
+Test to make sure the workflow action does not run when on a different branch than main.
+
+![Git Test for Non-Main](Project6-CI/images/git-test-non-main-trigger.png)
+
+![Non-Main Trigger](Project6-CI/images/test-non-main-trigger.png)
+
+![Action did not run](Project6-CI/images/proof-action-did-not-run.png)
 
 
 
