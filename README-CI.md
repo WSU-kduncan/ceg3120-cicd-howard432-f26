@@ -189,8 +189,39 @@ Test to make sure the workflow action does not run when on a different branch th
 
 ![Action did not run](Project6-CI/images/proof-action-did-not-run.png)
 
+## **6. Semantic Versioning**
 
+### **Overview:**
 
+We will build another GitHub action workflow that pushes versioned Docker images when a tag is created. This will help someone download a specific version of our website instead of always just downloading the newest one.
+
+### **Objectives:**
+
+- Create a separate release workflow.
+- Make the workflow to where it only triggers when a Git tag is pushed.
+- Use Docker Metadata Action to create the image tags.
+- Push two different versions of the image.
+- Check the tags and run a test that will take you back to an earlier version.
+
+### **Step 1. Create the workflow file**
+
+Open up a text editor that will house the new workflow file.
+
+`nano .github/workflows/docker-release.yml`
+
+I copied the original docker-publish.yml and made some changes:
+
+| Feature | Original: docker-publish.yml | New: docker-release.yml |
+| ----------- | ----------- | ----------- |
+| Name | Build and Push a Docker Image | Build and Push Versioned Docker Image |
+| Purpose | CI | Versioned releases |
+| Trigger | Push to main | Push a Git tag |
+| Trigger Ex. | `git push` to main | `git push origin v1.0.0` |
+| Docker image | `:latest` | `:1.0.0, :1.0, :1`, etc. |
+| Docker metadata action | No | Yes |
+| Build and Push | Yes | Yes |
+
+*Added:* Generate Docker metadata, tags for verison, major, minor. 
 
 
 
