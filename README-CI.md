@@ -86,7 +86,7 @@ http://localhost:8080/contact.html
 
 This is done so the image can be accessed remotely, instead of just locally.
 
-Public DockerHub repo: mandyhoward21/howard.cicd-f26
+Public DockerHub repo: mandyhoward21/howard-cicd-f26
 
 [DockerHub Repo](https://hub.docker.com/r/mandyhoward21/howard-cicd-f26/tags)
 
@@ -148,7 +148,7 @@ on:  [[Defines what event starts the workflow]]
 
 ### **Repo Secrets**
 
-Two different GitHub repo secrets were created for this project so we could securely authenticate with DockerHub. These were created in DockerHub under Settings -> Secrets and Variables -> Actions
+Two different GitHub repo secrets were created for this project so we could securely authenticate with DockerHub. These were created in GitHub repo under Settings -> Secrets and Variables -> Actions
 
 Secrets created:
 
@@ -223,9 +223,37 @@ I copied the original docker-publish.yml and made some changes:
 
 *Added:* Generate Docker metadata, tags for verison, major, minor. 
 
+### **Step 2. Config Docker Metadata**
 
+This action creates Docker image tags automatically based on the Git version tag. For this project we created a tag that points to the latest release, 1 shows the latest release in V1, and then 1.0 or 1.1 shows latest relase for major and minor versions.
 
+```
+tags: | 
+  type=raw,value=latest
+  type=semver,pattern={{major}}
+  type=semver,pattern={{major}}.{{minor}}
+  ```
 
+### **Step 3. Create and push V1.0.0**
+
+![Git Tag](Project6-CI/images/git-tag.png)
+
+This is what triggers the versioned release workflow. 
+
+### **Step 4. Create and push V1.1.0**
+
+![Git Tag](Project6-CI/images/git-tag.png)
+
+```
+git tag -a v1.1.0 -m "Release version 1.1.0"
+git push origin v1.1.0
+```
+
+### **Step 5. Check DockerHub Tags**
+
+Check the Tags page to make sure the new release didn't overwrite the minor version.
+
+![Tags](Project6-CI/images/dockerhub-version-comparison.png)
 
 
 
