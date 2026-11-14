@@ -236,13 +236,16 @@ tags: |
 
 ### **Step 3. Create and push V1.0.0**
 
+```
+git tag -a v1.0.0 -m "Release version 1.0.0"
+git push origin v1.0.0
+```
+
 ![Git Tag](Project6-CI/images/git-tag.png)
 
 This is what triggers the versioned release workflow. 
 
 ### **Step 4. Create and push V1.1.0**
-
-![Git Tag](Project6-CI/images/git-tag.png)
 
 ```
 git tag -a v1.1.0 -m "Release version 1.1.0"
@@ -253,7 +256,56 @@ git push origin v1.1.0
 
 Check the Tags page to make sure the new release didn't overwrite the minor version.
 
-![Tags](Project6-CI/images/dockerhub-version-comparison.png)
+![Version comparison](Project6-CI/images/dockerhub-version-comparison.png)
+
+### **Step 6. Test the rollbacks**
+
+`docker run -d -p 8080:80 --name rollback-v1 mandyhoward21/howard-cicd-f26:1.0`
+
+![rollback 1.0.0](Project6-CI/images/rollback-v-success.png)
+
+The website loaded without the version announcement successfully.
+
+`docker run -d -p 8080:80 --name rollback-v2 mandyhoward21/howard-cicd-f26:1.1`
+
+![rollback 1.1.0](Project6-CI/images/website-v1.1.0.png)
+
+The website showed the version 1.1.0 announcement successfully.
+
+### **Step 7. Test the Release Workflow Trigger**
+ 
+- Pushed a commit to the main branch without creating a git tag.
+- Original CI workflow ran as it should and the versioned workflow did not run (which is what we wanted!)
+
+View Versioned Workflow File: [Versioned](https://github.com/WSU-kduncan/ceg3120-cicd-howard432-f26/blob/main/.github/workflows/docker-release.yml)
+
+
+Sources:
+
+Source: Introduction GitHub Actions - hello-world demo (https://www.telerik.com/blogs/introduction-github-actions)
+Accessed: Hello World GitHub Actions - practice
+
+Source: GitHub Actions - DockerHub documentation (https://docs.docker.com/build/ci/github-actions/)
+Accessed: Docker Build GitHub Actions - Docker BuildX info, Build and push Docker images, configuring repo with secrets, setting up Actions workflow
+
+Source: Markdown Cheat Sheet (https://www.markdownguide.org/cheat-sheet/)
+Accessed: Markdown Syntax 
+
+Source: GitHub Docs-Triggering a workflow (https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow)
+Accessed: Breakdown of the parts of Triggering a Workflow
+
+Source: Semantic Versioning 2.0.0 (semver.org)
+Accessed: Semantic versioning best practives
+
+Source: Gemini Prompt "Write html code for the website you created for me that will show the Version"
+Response: Insert this immediately above </body>:
+  <div style="background-color: #174C3C; color: white; text-align: center; padding: 18px; margin-top: 30px; border-radius: 12px;">
+    <h2>✨ NEW FOR VERSION 1.1.0! ✨</h2>
+    <p>More groovy vibes, more Shiba love. Stay tuned for the next adventure!</p>
+  </div>
+
+Source: Gemini Prompt "Check this markdown file for any spelling or syntax errors"
+Response: Had a few images that were missing .png, a couple of spelling errors, and a duplicate image tag.
 
 
 
