@@ -125,6 +125,60 @@ Test by running the downloaded image in a separate container.
 
 `docker run -d -p 8080:80 --name howard-cicd-remote-test mandyhoward21/howard-cicd-f26:latest`
 
+## **5. GitHub Actions for Automated CI Workflow**
+
+Use GitHub actions to automate the Docker Image Build and Push Process so it can be done automatically whenever changes are pushed to the main branch.
+
+![Workflow](Project6-CI/images/create-workflows-dir-with-yml-file.png)
+
+### **Workflow File**
+
+View Workflow File: [Workflow File](https://github.com/WSU-kduncan/ceg3120-cicd-howard432-f26/blob/main/.github/workflows/docker-publish.yml)
+
+### **Workflow Trigger**
+
+A workflow trigger is simply an action that starts the automated process. This particular workflow is triggeredy by a push to the main branch (only).
+
+```
+on:  [[Defines what event starts the workflow]]
+  push: [[Event=Git push]]
+    branches: [[Which branch to watch]]
+      - main [[Only pushes to main branch trigger it]]
+```
+
+### **Repo Secrets**
+
+Two different GitHub repo secrets were created for this project so we could securely authenticate with DockerHub. These were created in DockerHub under Settings -> Secrets and Variables -> Actions
+
+Secrets created:
+
+| Secret | Role |
+| ----------- | ----------- |
+| DOCKER_USERNAME | Used to store the username |
+| DOCKER_TOKEN | Used to store the PAT |
+
+![Secrets](Project6-CI/images/repo-secrets.png)
+
+*Note:* The actual username and PAT values are hidden/not stored in the public repo for others to see.
+
+### **Workflow Steps**
+
+1. Gets the files from GitHub.
+2. Sets up the Docker build environment.
+3. Logs in to DockerHub by authenticating with the repo secrets.
+4. Builds the Docker image and pushes it to DockerHub with the `latest` tag.
+
+### **Workflow Image Config**
+
+This is what tells the GitHub Actions where to find the Dockerfile, to push the image and the tag that it should use.
+
+```
+context: ./Project6-CI
+push: true
+tags: mandyhoward21/howard-cicd-f26:latest
+```
+![Secret Test: Success](Project6-CI/images/gh-secret-success.png)
+
 
 
 
