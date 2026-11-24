@@ -1,0 +1,62 @@
+[
+  {
+    "id": "howard-CD-deploy",
+    "execute-command": "/home/ubuntu/deployment/refresh-container.sh",
+    "command-working-directory": "/home/ubuntu",
+    "response-message": "Yay! Howard CD deployment has started successfully!",
+    "trigger-rule": {
+      "and": [
+        {
+          "match": {
+            "type": "payload-hmac-sha256",
+              "secret": "{{ getenv `GITHUB_WEBHOOK_SECRET` | js }}",
+            "parameter": {
+              "source": "header",
+              "name": "X-Hub-Signature-256"
+            }
+          }
+        },
+        {
+          "match": {
+            "type": "value",
+            "value": "workflow_run",
+            "parameter": {
+              "source": "header",
+              "name": "X-GitHub-Event"
+            }
+          }
+        },
+        {
+          "match": {
+            "type": "value",
+            "value": "completed",
+            "parameter": {
+              "source": "payload",
+              "name": "action"
+            }
+          }
+        },
+        {
+          "match": {
+            "type": "value",
+            "value": "success",
+            "parameter": {
+              "source": "payload",
+              "name": "workflow_run.conclusion"
+            }
+          }
+        },
+        {
+          "match": {
+            "type": "value",
+            "value": "main",
+            "parameter": {
+              "source": "payload",
+              "name": "workflow_run.head_branch"
+            }
+          }
+        }
+      ]
+    }
+  }
+]
