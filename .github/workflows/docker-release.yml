@@ -29,6 +29,7 @@ jobs:
           images: mandyhoward21/howard-cicd-f26
           tags: |
             type=raw,value=latest
+            type=semver,pattern={{version}}
             type=semver,pattern={{major}}
             type=semver,pattern={{major}}.{{minor}}
 
